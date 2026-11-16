@@ -1,0 +1,60 @@
+from django.db import models
+
+from django.contrib.auth.models import AbstractUser
+
+class User(AbstractUser):
+
+    phone = models.CharField(max_length=12,unique=True)
+
+    ROLE_CHOICES = (
+        ("trainer","trainer"),
+        ("student","student")
+    )
+
+    role = models.CharField(max_length=50,choices=ROLE_CHOICES,default="student")
+
+    def __str__(self):
+        return self.username
+
+class TrainerProfile(models.Model):
+
+    trainer = models.OneToOneField(User,on_delete=models.CASCADE,related_name="trainer")
+
+    specialization = models.CharField(max_length=100,null=True)
+
+    skills = models.TextField(null=True)
+
+    qualification = models.CharField(max_length=200,null=True)
+
+    experience = models.CharField(max_length=200,null=True)
+
+    profile_picture = models.ImageField(upload_to="cover_pics",null=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    updated_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.trainer
+
+class StudentProfile(models.Model):
+
+    student = models.OneToOneField(User,on_delete=models.CASCADE,related_name="student")
+
+    course = models.CharField(max_length=200,null=True)
+
+    qualification = models.CharField(max_length=200,null=True)
+
+    passout_year = models.PositiveIntegerField(null=True)
+
+    profile_picture = models.ImageField(upload_to="cover_pics",null=True)
+
+    skills = models.TextField(null=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    updated_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.student
+    
