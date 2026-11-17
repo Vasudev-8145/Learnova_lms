@@ -1,6 +1,7 @@
 from django.db import models
 
 from django.contrib.auth.models import AbstractUser
+from django.db.models.signals import post_save
 
 class User(AbstractUser):
 
@@ -57,4 +58,19 @@ class StudentProfile(models.Model):
 
     def __str__(self):
         return self.student
-    
+
+def create_trainer_profile(sender,instance,created,*args,**kwargs):
+
+    if created and instance.role == "trainer":
+
+        TrainerProfile.objects.create(trainer=instance)
+
+post_save.connect(create_trainer_profile,User)
+
+def create_student_profile(sender,instance,created,*args,**kwargs):
+
+    if created and instance.role == "student":
+
+        StudentProfile.objects.create(student=instance)
+
+post_save.connect(create_student_profile,User)
