@@ -1,6 +1,6 @@
 
 
-# ============ REGISTRATION,AUTHENTICATION ================= #
+# ============ REGISTRATION,AUTHENTICATION,PROFILE ================= #
 
 # api call for trainer registration
 ###
@@ -8,10 +8,10 @@ POST http://127.0.0.1:8000/accounts/trainer/
 Content-Type: application/json
 
 {
-    "username":"trainer1",
-    "email":"trainer1@gmail.come",
-    "password":"trainer1@123",
-    "phone":789456127
+    "username":"trainer3",
+    "email":"trainer3@gmail.come",
+    "password":"trainer3@123",
+    "phone":789486127
 }
 
 # api call for student registration
@@ -20,8 +20,37 @@ POST http://127.0.0.1:8000/accounts/student/
 Content-Type: application/json
 
 {
-    "username":"student1",
-    "email":"student1@gmail.come",
-    "password":"student1@123",
-    "phone":789456178
+    "username":"student3",
+    "email":"student3@gmail.come",
+    "password":"student3@123",
+    "phone":989456178
 }
+
+# api call for token creation
+###
+POST http://127.0.0.1:8000/accounts/token/
+Content-Type: application/json
+
+{
+    "username":"trainer1",
+    "password":"trainer1@123"
+}
+
+# api call for trainer profile update
+###
+PUT http://127.0.0.1:8000/accounts/trainer/profile/complete/
+Content-Type: application/json
+Authorization: Token 01ba2b7eeadfe96e6e631aebec5513fdb5bfb4d9
+
+{
+    "specialization":"python django",
+    "skills":"python,django,sql,html,css,js,bootstrap,react",
+    "qualification":"mca cs",
+    "experience":"8 years"
+}
+
+# api call for trainer profile retreiving
+###
+GET http://127.0.0.1:8000/accounts/trainer/profile/me/
+Accept: application/json
+Authorization: Token 01ba2b7eeadfe96e6e631aebec5513fdb5bfb4d9
