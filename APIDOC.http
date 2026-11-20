@@ -54,3 +54,57 @@ Authorization: Token 01ba2b7eeadfe96e6e631aebec5513fdb5bfb4d9
 GET http://127.0.0.1:8000/accounts/trainer/profile/me/
 Accept: application/json
 Authorization: Token 01ba2b7eeadfe96e6e631aebec5513fdb5bfb4d9
+
+
+# ============ COURSE CRUD ================= #
+
+
+# api call for listing courses
+###
+GET http://127.0.0.1:8000/subject/course/all/
+Accept: application/json
+Authorization: Token 01ba2b7eeadfe96e6e631aebec5513fdb5bfb4d9
+
+# api call for creating courses
+###
+POST http://127.0.0.1:8000/subject/course/add/
+Content-Type: application/json
+Authorization: Token 01ba2b7eeadfe96e6e631aebec5513fdb5bfb4d9
+
+{
+    "title":"Python Django Full Stack",
+    "description":"AI integrated python full stack development course.",
+    "fees":45000,
+    "duration":"7 months",
+    "languages":"Python,Django,SQL,React.js,HTML5,CSS,Javascript"
+}
+
+# api call for retrieving a course
+###
+GET http://127.0.0.1:8000/subject/course/one/1/
+Accept: application/json
+Authorization: Token 01ba2b7eeadfe96e6e631aebec5513fdb5bfb4d9
+
+# api call for updating a course
+###
+PUT http://127.0.0.1:8000/subject/course/1/
+Content-Type: application/json
+Authorization: Token 01ba2b7eeadfe96e6e631aebec5513fdb5bfb4d9
+
+{
+    "id": 2,
+    "trainer": "trainer1",
+    "title": "Data Scince",
+    "description": "AI integrated data science course.",
+    "fees": 78000,
+    "duration": "7.5 months",
+    "languages": "Python,NumPy,Pandas,AI/ML",
+    "created_at": "2026-11-20T14:27:05.734517Z",
+    "updated_at": "2026-11-20T14:27:05.734517Z"
+  }
+
+# api call for deleting a course
+###
+DELETE http://127.0.0.1:8000/subject/course/4/
+Accept: application/json
+Authorization: Token 01ba2b7eeadfe96e6e631aebec5513fdb5bfb4d9
