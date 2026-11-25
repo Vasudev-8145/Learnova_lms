@@ -15,9 +15,6 @@ class User(AbstractUser):
 
     role = models.CharField(max_length=50,choices=ROLE_CHOICES,default="student")
 
-    def __str__(self):
-        return self.username
-
 class TrainerProfile(models.Model):
 
     trainer = models.OneToOneField(User,on_delete=models.CASCADE,related_name="trainer")

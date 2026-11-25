@@ -8,10 +8,10 @@ POST http://127.0.0.1:8000/accounts/trainer/
 Content-Type: application/json
 
 {
-    "username":"ajay",
-    "email":"ajay@gmail.come",
-    "password":"ajay@123",
-    "phone":456756123
+    "username":"ajay12",
+    "email":"ajay12@gmail.come",
+    "password":"ajay12@123",
+    "phone":4567561523
 }
 
 # api call for student registration

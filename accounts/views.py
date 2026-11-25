@@ -31,30 +31,6 @@ class TrainerCreateView(APIView):
 
             return Response(data=serializer_instance.errors)
 
-# class TrainerCreateView(APIView):
-
-#     def post(self, request):
-
-#         # print("INCOMING DATA:", request.data)
-
-#         serializer = UserSerializer(data=request.data)
-
-#         if serializer.is_valid():
-
-#             user = serializer.save(role="trainer")
-
-#             return Response(
-#                 UserSerializer(user).data,
-#                 status=status.HTTP_201_CREATED
-#             )
-
-#         print("VALIDATION ERRORS:", serializer.errors)
-
-#         return Response(
-#             serializer.errors,
-#             status=status.HTTP_400_BAD_REQUEST
-#         )
-
 class StudentCreateView(APIView):
 
     def post(self,request):
