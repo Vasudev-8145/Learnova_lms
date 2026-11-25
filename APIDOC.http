@@ -8,10 +8,10 @@ POST http://127.0.0.1:8000/accounts/trainer/
 Content-Type: application/json
 
 {
-    "username":"trainer3",
-    "email":"trainer3@gmail.come",
-    "password":"trainer3@123",
-    "phone":789486127
+    "username":"ajay",
+    "email":"ajay@gmail.come",
+    "password":"ajay@123",
+    "phone":456756123
 }
 
 # api call for student registration
@@ -20,10 +20,10 @@ POST http://127.0.0.1:8000/accounts/student/
 Content-Type: application/json
 
 {
-    "username":"student3",
-    "email":"student3@gmail.come",
-    "password":"student3@123",
-    "phone":989456178
+    "username":"azif",
+    "email":"azif@gmail.come",
+    "password":"azif@123",
+    "phone":989456145
 }
 
 # api call for token creation
@@ -32,28 +32,28 @@ POST http://127.0.0.1:8000/accounts/token/
 Content-Type: application/json
 
 {
-    "username":"trainer1",
-    "password":"trainer1@123"
+    "username":"ajay",
+    "password":"ajay@123"
 }
 
 # api call for trainer profile update
 ###
 PUT http://127.0.0.1:8000/accounts/trainer/profile/complete/
 Content-Type: application/json
-Authorization: Token 01ba2b7eeadfe96e6e631aebec5513fdb5bfb4d9
+Authorization: Token 1e24ca82c4b3e46b213a993667316c25e67edf08
 
 {
     "specialization":"python django",
     "skills":"python,django,sql,html,css,js,bootstrap,react",
     "qualification":"mca cs",
-    "experience":"8 years"
+    "experience":"4 years"
 }
 
 # api call for trainer profile retreiving
 ###
 GET http://127.0.0.1:8000/accounts/trainer/profile/me/
 Accept: application/json
-Authorization: Token 01ba2b7eeadfe96e6e631aebec5513fdb5bfb4d9
+Authorization: Token 1e24ca82c4b3e46b213a993667316c25e67edf08
 
 
 # ============ COURSE CRUD ================= #
@@ -63,13 +63,13 @@ Authorization: Token 01ba2b7eeadfe96e6e631aebec5513fdb5bfb4d9
 ###
 GET http://127.0.0.1:8000/subject/course/all/
 Accept: application/json
-Authorization: Token 01ba2b7eeadfe96e6e631aebec5513fdb5bfb4d9
+Authorization: Token 1e24ca82c4b3e46b213a993667316c25e67edf08
 
 # api call for creating courses
 ###
 POST http://127.0.0.1:8000/subject/course/add/
 Content-Type: application/json
-Authorization: Token 01ba2b7eeadfe96e6e631aebec5513fdb5bfb4d9
+Authorization: Token 1e24ca82c4b3e46b213a993667316c25e67edf08
 
 {
     "title":"Python Django Full Stack",
@@ -81,30 +81,80 @@ Authorization: Token 01ba2b7eeadfe96e6e631aebec5513fdb5bfb4d9
 
 # api call for retrieving a course
 ###
-GET http://127.0.0.1:8000/subject/course/one/1/
+GET http://127.0.0.1:8000/subject/course/one/8/
 Accept: application/json
-Authorization: Token 01ba2b7eeadfe96e6e631aebec5513fdb5bfb4d9
+Authorization: Token 1e24ca82c4b3e46b213a993667316c25e67edf08
 
 # api call for updating a course
 ###
-PUT http://127.0.0.1:8000/subject/course/1/
+PUT http://127.0.0.1:8000/subject/course/8/
 Content-Type: application/json
-Authorization: Token 01ba2b7eeadfe96e6e631aebec5513fdb5bfb4d9
+Authorization: Token 1e24ca82c4b3e46b213a993667316c25e67edf08
 
 {
-    "id": 2,
-    "trainer": "trainer1",
-    "title": "Data Scince",
-    "description": "AI integrated data science course.",
-    "fees": 78000,
-    "duration": "7.5 months",
-    "languages": "Python,NumPy,Pandas,AI/ML",
-    "created_at": "2026-11-20T14:27:05.734517Z",
-    "updated_at": "2026-11-20T14:27:05.734517Z"
-  }
+  "id": 8,
+  "trainer": "ajay",
+  "modules": [],
+  "module_count": 0,
+  "title": "Python Django Full Stack",
+  "description": "AI integrated python full stack development course.",
+  "fees": 45000,
+  "duration": "7.5 months",
+  "languages": "Python,Django,SQL,React.js,HTML5,CSS,Javascript",
+  "cover_picture": null,
+  "created_at": "2026-11-25T03:56:38.377816Z",
+  "updated_at": "2026-11-25T03:56:38.377816Z"
+}
 
 # api call for deleting a course
 ###
-DELETE http://127.0.0.1:8000/subject/course/4/
+DELETE http://127.0.0.1:8000/subject/course/7/
+Accept: application/json
+Authorization: Token 1e24ca82c4b3e46b213a993667316c25e67edf08
+
+
+# ============ MODULE CRUD ================= #
+
+
+# api call for creating modules
+###
+POST http://127.0.0.1:8000/units/course/10/modules/
+Content-Type: application/json
+Authorization: Token 1e24ca82c4b3e46b213a993667316c25e67edf08
+
+{
+    "title":"django",
+    "description":"Basic and advanced django",
+    "duration":"2.5 months",
+    "exam_date":"2026-11-24"
+}
+
+# api call for retrieving a module
+###
+GET http://127.0.0.1:8000/units/module/20/
+Accept: application/json
+Authorization: Token 1e24ca82c4b3e46b213a993667316c25e67edf08
+
+# api call for updating a course
+###
+PUT http://127.0.0.1:8000/units/module/20/
+Content-Type: application/json
+Authorization: Token 1e24ca82c4b3e46b213a993667316c25e67edf08
+
+{
+  "id": 20,
+  "course": "Python Django Full Stack",
+  "module_number": 2,
+  "title": "mysql",
+  "description": "Basic and advanced mysql",
+  "duration": "2.5 weeks",
+  "exam_date": "2026-11-25",
+  "created_at": "2026-11-25T04:01:11.061231Z",
+  "updated_at": "2026-11-25T04:01:11.061231Z"
+}
+
+# api call for deleting a course
+###
+DELETE http://127.0.0.1:8000/units/module/11/
 Accept: application/json
 Authorization: Token 01ba2b7eeadfe96e6e631aebec5513fdb5bfb4d9

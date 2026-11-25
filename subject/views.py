@@ -11,10 +11,14 @@ from subject.permissions import TrainerOnly
 class CourseListView(ListAPIView):
 
     authentication_classes = [authentication.TokenAuthentication]
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [TrainerOnly]
 
     serializer_class = CourseSerializer
-    queryset = Course.objects.all()
+    # queryset = Course.objects.all()
+
+    def get_queryset(self):
+        
+        return Course.objects.filter(trainer=self.request.user)
 
 class CourseCreateView(CreateAPIView):
 
