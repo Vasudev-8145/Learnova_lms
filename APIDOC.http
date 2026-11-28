@@ -8,10 +8,10 @@ POST http://127.0.0.1:8000/accounts/trainer/
 Content-Type: application/json
 
 {
-    "username":"ajay12",
-    "email":"ajay12@gmail.come",
-    "password":"ajay12@123",
-    "phone":4567561523
+    "username":"seetha",
+    "email":"seetha@gmail.come",
+    "password":"seethaABC",
+    "phone":4527291388
 }
 
 # api call for student registration
@@ -20,10 +20,10 @@ POST http://127.0.0.1:8000/accounts/student/
 Content-Type: application/json
 
 {
-    "username":"azif",
-    "email":"azif@gmail.come",
-    "password":"azif@123",
-    "phone":989456145
+    "username":"raman",
+    "email":"raman@gmail.come",
+    "password":"raman@123",
+    "phone":378456145
 }
 
 # api call for token creation
@@ -32,8 +32,8 @@ POST http://127.0.0.1:8000/accounts/token/
 Content-Type: application/json
 
 {
-    "username":"ajay",
-    "password":"ajay@123"
+    "username":"trainer1",
+    "password":"trainer1@123"
 }
 
 # api call for trainer profile update
@@ -131,11 +131,11 @@ Authorization: Token 1e24ca82c4b3e46b213a993667316c25e67edf08
 
 # api call for retrieving a module
 ###
-GET http://127.0.0.1:8000/units/module/20/
+GET http://127.0.0.1:8000/units/module/19/
 Accept: application/json
 Authorization: Token 1e24ca82c4b3e46b213a993667316c25e67edf08
 
-# api call for updating a course
+# api call for updating a module
 ###
 PUT http://127.0.0.1:8000/units/module/20/
 Content-Type: application/json
@@ -153,8 +153,55 @@ Authorization: Token 1e24ca82c4b3e46b213a993667316c25e67edf08
   "updated_at": "2026-11-25T04:01:11.061231Z"
 }
 
-# api call for deleting a course
+# api call for deleting a module
 ###
 DELETE http://127.0.0.1:8000/units/module/11/
 Accept: application/json
 Authorization: Token 01ba2b7eeadfe96e6e631aebec5513fdb5bfb4d9
+
+
+# ============ LESSON CRUD ================= #
+
+
+# api call for creating lessons
+###
+POST http://127.0.0.1:8000/chapters/modules/19/lessons/
+Content-Type: application/json
+Authorization: Token 1e24ca82c4b3e46b213a993667316c25e67edf08
+
+{
+    "title":"OOPs",
+    "description":"object oreinted programming",
+    "duration":"2 weeks",
+    "video_url":"https://youtube.com/playlist?list=PL9gnSGHSqcno1G3XjUbwzXHL8_EttOuKk&si=XX93Omt5eGB0yX2q"
+}
+
+# api call for retrieving a lesson
+###
+GET http://127.0.0.1:8000/chapters/lessons/1/
+Accept: application/json
+Authorization: Token 1e24ca82c4b3e46b213a993667316c25e67edf08
+
+# api call for updating a lesson
+###
+PUT http://127.0.0.1:8000/chapters/lessons/1/
+Content-Type: application/json
+Authorization: Token 1e24ca82c4b3e46b213a993667316c25e67edf08
+
+{
+  "id": 1,
+  "module": "python",
+  "lesson_number": 1,
+  "title": "loops",
+  "description": "for loop,while loops,match case",
+  "duration": "1.5 weeks",
+  "video_url": "https://youtu.be/KWgYha0clzw?si=23halE1k72o5PByO",
+  "created_at": "2026-11-28T04:42:44.073337Z",
+  "updated_at": "2026-11-28T04:42:44.073337Z"
+}
+
+# api call for deleting a lesson
+###
+DELETE http://127.0.0.1:8000/chapters/lessons/4/
+Accept: application/json
+Authorization: Token 1e24ca82c4b3e46b213a993667316c25e67edf08

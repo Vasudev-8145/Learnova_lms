@@ -3,7 +3,7 @@ from rest_framework import serializers
 
 from accounts.models import User,TrainerProfile
 
-class UserSerializer(serializers.ModelSerializer):
+class TrainerSerializer(serializers.ModelSerializer):
 
     class Meta:
 
@@ -12,7 +12,23 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ["id","username","email","password","phone","role"]
 
         read_only_fields = ["id","role"]
-        
+
+    def create(self, validated_data):
+        return User.objects.create_superuser(**validated_data,role="trianer")
+
+class StudentSerializer(serializers.ModelSerializer):
+
+    class Meta:
+
+        model = User
+
+        fields = ["id","username","email","password","phone","role"]
+
+        read_only_fields = ["id","role"]
+
+    def create(self, validated_data):
+        return User.objects.create_user(**validated_data,role="student")
+           
 class TrainerProfileSerializer(serializers.ModelSerializer):
 
     trainer = serializers.StringRelatedField()

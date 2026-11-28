@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework import authentication,permissions
 
 from accounts.models import User,TrainerProfile
-from accounts.serializers import UserSerializer,TrainerProfileSerializer
+from accounts.serializers import TrainerSerializer,StudentSerializer,TrainerProfileSerializer
 from accounts.permissions import IsTrainerUser
 
 class TrainerCreateView(APIView):
@@ -15,15 +15,13 @@ class TrainerCreateView(APIView):
 
         form_data = request.data
 
-        serializer_instance = UserSerializer(data=form_data)
+        serializer_instance = TrainerSerializer(data=form_data)
 
         if serializer_instance.is_valid():
 
-            cleaned_data = serializer_instance.validated_data
+            serializer_instance.save()
 
-            instance = User.objects.create_superuser(role="trainer",**cleaned_data)
-
-            serializer_instance = UserSerializer(instance)
+            
 
             return Response(data=serializer_instance.data)
 
@@ -37,15 +35,11 @@ class StudentCreateView(APIView):
 
         form_data = request.data
 
-        serializer_instance = UserSerializer(data=form_data)
+        serializer_instance = StudentSerializer(data=form_data)
 
         if serializer_instance.is_valid():
 
-            cleaned_data = serializer_instance.validated_data
-
-            instance = User.objects.create_user(role="student",**cleaned_data)
-
-            serializer_instance = UserSerializer(instance)
+            serializer_instance.save()
 
             return Response(data=serializer_instance.data)
 

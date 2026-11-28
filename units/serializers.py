@@ -1,13 +1,18 @@
 
 from rest_framework import serializers
+
 from units.models import Modules
 from subject.models import Course
+from chapters.models import Lessons
+from chapters.serializers import LessonSerializer
 
 from datetime import datetime
 
 class ModuleSerializer(serializers.ModelSerializer):
 
     course = serializers.StringRelatedField(read_only=True)
+    lessons = serializers.SerializerMethodField(read_only=True)
+    lesson_count = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
 
@@ -26,3 +31,15 @@ class ModuleSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Please enter a valid date")
 
         return validated_data
+
+    def get_lessons(self,obj):
+
+        lesson_object = Lessons.objects.filter(module=obj)
+
+        serializer_instance = LessonSerializer(lesson_object,many=True)
+
+        return serializer_instance.data
+
+    def get_lesson_count(self,obj):
+
+        return Lessons.objects.filter(module=obj).count()

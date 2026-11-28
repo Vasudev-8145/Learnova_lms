@@ -28,4 +28,7 @@ urlpatterns = [
 
     # route to units
     path("units/",include("units.urls")),
+
+    # route to chapters
+    path("chapters/",include("chapters.urls")),
 ]
